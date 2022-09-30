@@ -26,20 +26,16 @@ class Login extends React.Component {
   handleClick = () => {
     const { dispatch } = this.props;
     const { email } = this.state;
-    dispatch(userInfo({
-      email,
-    }));
-    this.setState({
-      redirect: true,
-    });
+    dispatch(userInfo({ email }));
+    this.setState({ redirect: true });
   };
 
   validarEmailSenha() {
     const { email, senha } = this.state;
-    const maxLength = 6;
+    const minLength = 6;
     const re = /\S+@\S+\.\S+/;
     const emailVerificado = re.test(email);
-    const senhaVerificada = senha.length >= maxLength;
+    const senhaVerificada = senha.length >= minLength;
     this.setState({ isDisable: !(emailVerificado && senhaVerificada) });
   }
 
