@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { userInfo } from '../redux/actions';
+import { fetchAPI, userInfo } from '../redux/actions';
 
 class Login extends React.Component {
   constructor() {
@@ -27,6 +27,7 @@ class Login extends React.Component {
     const { dispatch } = this.props;
     const { email } = this.state;
     dispatch(userInfo({ email }));
+    dispatch(fetchAPI())
     this.setState({ redirect: true });
   };
 
