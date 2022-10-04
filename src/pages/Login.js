@@ -27,7 +27,7 @@ class Login extends React.Component {
     const { dispatch } = this.props;
     const { email } = this.state;
     dispatch(userInfo({ email }));
-    dispatch(fetchAPI())
+    dispatch(fetchAPI());
     this.setState({ redirect: true });
   };
 
