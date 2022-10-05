@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 class Table extends Component {
   retornaAsk = (ask) => Number(ask).toFixed(2);
+
   conversão = (ask, value) => (Number(ask) * Number(value)).toFixed(2);
 
   render() {
@@ -27,7 +28,7 @@ class Table extends Component {
 
           {expenses.map((e) => (
             <tr
-              key={e.id}
+              key={ e.id }
             >
               <td>{e.description}</td>
               <td>{e.tag}</td>
