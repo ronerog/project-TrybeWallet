@@ -7,7 +7,6 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case ADD_USER:
-    console.log(action.payload);
     return {
       ...state,
       email: action.payload,
