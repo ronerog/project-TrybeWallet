@@ -17,6 +17,7 @@ const wallet = (state = INITIAL_STATE, action) => {
       currencies: action.payload,
     };
   case ADD_DESPESA:
+    console.log(state);
     return {
       ...state,
       expenses: [...state.expenses, action.payload],

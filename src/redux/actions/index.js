@@ -1,9 +1,9 @@
 // Coloque aqui suas actions
 export const ADD_USER = 'ADD_USER';
 
-export const userInfo = (state) => ({
+export const userInfo = (email) => ({
   type: ADD_USER,
-  payload: { ...state },
+  payload: email,
 });
 
 export const ADD_MOEDA = 'ADD_MOEDA';
@@ -15,7 +15,7 @@ export const walletInfo = (state) => ({
 
 export const ADD_DESPESA = 'ADD_DESPESA';
 
-export const addDespesa = (attMoeda, state) => ({
+export const addDespesaState = (attMoeda, state) => ({
   type: ADD_DESPESA,
   payload: {
     ...state,
@@ -46,7 +46,7 @@ export const addDespesaRequest = (obj) => async (dispatch) => {
     const url = 'https://economia.awesomeapi.com.br/json/all';
     const request = await fetch(url);
     const resposta = await request.json();
-    dispatch(addDespesa(resposta, obj));
+    dispatch(addDespesaState(resposta, obj));
   } catch (error) {
     dispatch(failRequest(error));
   }

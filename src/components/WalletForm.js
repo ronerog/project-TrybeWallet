@@ -9,11 +9,11 @@ class WalletForm extends Component {
 
     this.state = {
       id: 0,
-      valor: '',
-      describe: '',
-      moeda: 'USD',
-      metodoPgmt: 'Dinheiro',
-      categoria: 'Alimentação',
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
     };
   }
 
@@ -24,86 +24,126 @@ class WalletForm extends Component {
 
   handleClick = () => {
     const { addDespesa } = this.props;
+    const { value, description, currency, method, tag, id } = this.state;
     this.setState((state) => ({
       id: state.id + 1,
     }));
-    const { valor, describe, moeda, metodoPgmt, categoria, id } = this.state;
-    addDespesa({ id, valor, describe, moeda, metodoPgmt, categoria });
+    addDespesa({ id, value, description, currency, method, tag });
     this.stateReset();
   };
 
   stateReset = () => {
     this.setState({
-      valor: '',
-      describe: '',
-      moeda: 'USD',
-      metodoPgmt: 'Dinheiro',
-      categoria: 'Alimentação',
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
     });
   };
 
   render() {
-    const { valor, describe, moeda, metodoPgmt, categoria } = this.state;
+    const { value, description, currency, method, tag } = this.state;
     const { currencies } = this.props;
     return (
       <form>
-        <label htmlFor="valor">
+        <label htmlFor="value">
           Valor:
           <input
             type="text"
             data-testid="value-input"
-            name="valor"
-            value={ valor }
+            name="value"
+            value={ value }
             onChange={ this.handleChange }
           />
         </label>
-        <label htmlFor="describe">
+        <label htmlFor="description">
           Descrição:
           <input
             type="text"
             data-testid="description-input"
-            name="describe"
-            value={ describe }
+            name="description"
+            value={ description }
             onChange={ this.handleChange }
           />
         </label>
-        <label htmlFor="moeda">
+        <label htmlFor="currency">
           Moeda:
           <select
-            name="moeda"
+            name="currency"
             data-testid="currency-input"
-            value={ moeda }
+            value={ currency }
             onChange={ this.handleChange }
           >
             {currencies.map((element) => <option key={ element }>{ element }</option>)}
           </select>
         </label>
-        <label htmlFor="metodoPgmt">
+        <label htmlFor="method">
           Método de pagamento:
           <select
-            name="metodoPgmt"
+            name="method"
             data-testid="method-input"
-            value={ metodoPgmt }
+            value={ method }
             onChange={ this.handleChange }
           >
-            <option>Dinheiro</option>
-            <option>Cartão de crédito</option>
-            <option>Cartão de débito</option>
+            <option
+              value="Dinheiro"
+              name="method"
+            >
+              Dinheiro
+            </option>
+            <option
+              value="Cartão de crédito"
+              name="method"
+            >
+              Cartão de crédito
+            </option>
+            <option
+              value="Cartão de débito"
+              name="method"
+            >
+              Cartão de débito
+            </option>
           </select>
         </label>
-        <label htmlFor="categoria">
+        <label htmlFor="tag">
           Categoria:
           <select
-            name="categoria"
+            name="tag"
             data-testid="tag-input"
-            value={ categoria }
+            value={ tag }
             onChange={ this.handleChange }
           >
-            <option>Alimentação</option>
-            <option>Lazer</option>
-            <option>Trabalho</option>
-            <option>Transporte</option>
-            <option>Saúde</option>
+            <option
+              value="Alimentação"
+              name="tag"
+            >
+              Alimentação
+            </option>
+            <option
+              value="Lazer"
+              name="tag"
+            >
+              Lazer
+            </option>
+            <option
+              value="Trabalho"
+              name="tag"
+            >
+              Trabalho
+            </option>
+            <option
+              value="Transporte"
+              name="tag"
+            >
+              Transporte
+            </option>
+            <option
+              value="Saúde"
+              name="tag"
+            >
+              Saúde
+            </option>
           </select>
         </label>
         <button

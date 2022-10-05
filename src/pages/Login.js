@@ -26,7 +26,7 @@ class Login extends React.Component {
   handleClick = () => {
     const { dispatch } = this.props;
     const { email } = this.state;
-    dispatch(userInfo({ email }));
+    dispatch(userInfo(email));
     dispatch(fetchAPI());
     this.setState({ redirect: true });
   };

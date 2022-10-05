@@ -7,9 +7,9 @@ class Header extends Component {
     const { expenses } = this.props;
     console.log(expenses);
     const subtotal = expenses.reduce((acc, curr) => {
-      const { moeda } = curr;
-      if (moeda !== 'USDT') {
-        const valor = Number(curr.exchangeRates[moeda].ask) * Number(curr.valor);
+      const { currency } = curr;
+      if (currency !== 'USDT') {
+        const valor = Number(curr.exchangeRates[currency].ask) * Number(curr.value);
         return acc + Number(valor);
       }
       return acc;
@@ -24,13 +24,15 @@ class Header extends Component {
         <p data-testid="email-field">
           {' '}
           Olá,
-          { email }
+          {email}
           !
         </p>
-        <span data-testid="total-field">
+        <p>
           Despesa Total: R$
-          { this.total() }
-        </span>
+          <span data-testid="total-field">
+            {this.total()}
+          </span>
+        </p>
         <span data-testid="header-currency-field">BRL</span>
       </header>
     );
