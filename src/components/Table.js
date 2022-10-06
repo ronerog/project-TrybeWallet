@@ -53,19 +53,17 @@ class Table extends Component {
               <td>
                 <button
                   type="button"
-                  data-testid="delete-btn"
-                  onClick={ () => this.remove(e.id) }
-                >
-                  Excluir
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
                   data-testid="edit-btn"
                   onClick={ () => editOn(element.id) }
                 >
                   Editar
+                </button>
+                <button
+                  type="button"
+                  data-testid="delete-btn"
+                  onClick={ () => this.remove(e.id) }
+                >
+                  Excluir
                 </button>
               </td>
             </tr>
