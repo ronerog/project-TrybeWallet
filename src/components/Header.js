@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Header extends Component {
   total = () => {
     const { expenses } = this.props;
-    console.log(expenses);
     const subtotal = expenses.reduce((acc, curr) => {
       const { currency } = curr;
       if (currency !== 'USDT') {

@@ -1,4 +1,3 @@
-// Coloque aqui suas actions
 export const ADD_USER = 'ADD_USER';
 
 export const userInfo = (email) => ({
@@ -27,6 +26,18 @@ export const FAIL_REQ = 'FAIL_REQ';
 
 export const initialRequest = () => ({ type: INITIAL_REQ });
 export const failRequest = (erro) => ({ type: FAIL_REQ, erro });
+
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const EDIT_TRUE = 'EDIT_TRUE';
+
+export const removeExpense = (remove) => ({ type: REMOVE_EXPENSE, remove });
+export const editExpense = (edit) => ({ type: EDIT_EXPENSE, edit });
+export const editTrue = (id) => ({
+  type: EDIT_TRUE,
+  payload: true,
+  id,
+});
 
 export const fetchAPI = () => async (dispatch) => {
   try {

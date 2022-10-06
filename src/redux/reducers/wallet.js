@@ -1,4 +1,9 @@
-import { ADD_DESPESA, ADD_MOEDA, INITIAL_REQ } from '../actions';
+import {
+  ADD_DESPESA, ADD_MOEDA,
+  EDIT_EXPENSE, EDIT_TRUE,
+  INITIAL_REQ,
+  REMOVE_EXPENSE,
+} from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -17,10 +22,27 @@ const wallet = (state = INITIAL_STATE, action) => {
       currencies: action.payload,
     };
   case ADD_DESPESA:
-    console.log(state);
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
+      editor: false,
+    };
+  case EDIT_TRUE:
+    return {
+      ...state,
+      editor: action.payload,
+      idToEdit: action.id,
+    };
+  case REMOVE_EXPENSE:
+    return {
+      ...state,
+      expenses: action.remove,
+    };
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      expenses: [...action.edit],
+      editor: false,
     };
   default:
     return state;

@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { removeExpense, editExpense } from '../redux/actions/index';
 
 class Table extends Component {
-  retornaAsk = (ask) => Number(ask).toFixed(2);
-
   conversão = (ask, value) => (Number(ask) * Number(value)).toFixed(2);
 
+  retornaAsk = (ask) => Number(ask).toFixed(2);
+
+  remove = (id) => {
+    const { expenses, removeExpenseFunc } = this.props;
+    const newTable = expenses.filter((element) => element.id !== id);
+    removeExpenseFunc(newTable);
+  };
+
   render() {
-    const { expenses } = this.props;
+    const { expenses, editOn } = this.props;
     return (
       <table>
         <thead>
@@ -47,6 +54,7 @@ class Table extends Component {
                 <button
                   type="button"
                   data-testid="delete-btn"
+                  onClick={ () => this.remove(e.id) }
                 >
                   Excluir
                 </button>
@@ -55,6 +63,7 @@ class Table extends Component {
                 <button
                   type="button"
                   data-testid="edit-btn"
+                  onClick={ () => editOn(element.id) }
                 >
                   Editar
                 </button>
@@ -76,4 +85,9 @@ const mapStateToProps = (state) => ({
   id: state.wallet.id,
 });
 
-export default connect(mapStateToProps)(Table);
+const mapDispatchToProps = (dispatch) => ({
+  removeExpenseFunc: (value) => dispatch(removeExpense(value)),
+  editOn: (value) => dispatch(editExpense(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
