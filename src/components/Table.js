@@ -54,7 +54,7 @@ class Table extends Component {
                 <button
                   type="button"
                   data-testid="edit-btn"
-                  onClick={ () => editOn(element.id) }
+                  onClick={ () => editOn(e.id) }
                 >
                   Editar
                 </button>

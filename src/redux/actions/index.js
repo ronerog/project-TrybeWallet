@@ -32,8 +32,8 @@ export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 export const EDIT_TRUE = 'EDIT_TRUE';
 
 export const removeExpense = (remove) => ({ type: REMOVE_EXPENSE, remove });
-export const editExpense = (edit) => ({ type: EDIT_EXPENSE, edit });
-export const editTrue = (id) => ({
+// export const  = (edit) => ({ type: EDIT_EXPENSE, edit });eu tava monsonb
+export const editExpense = (id) => ({
   type: EDIT_TRUE,
   payload: true,
   id,

@@ -39,6 +39,7 @@ const wallet = (state = INITIAL_STATE, action) => {
       expenses: action.remove,
     };
   case EDIT_EXPENSE:
+    console.log(action.edit);
     return {
       ...state,
       expenses: [...action.edit],
